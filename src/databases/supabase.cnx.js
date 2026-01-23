@@ -1,12 +1,18 @@
 import { createClient } from '@supabase/supabase-js';
 import { config } from '../config/config.js';
 
-class Database {
-  static connect() {
-    this.supabase = createClient(config.SUPABASE_URL, config.SUPABASE_API_KEY);
+class SupabaseClientSingleton {
+  static #instance = null;
 
-    return this.supabase;
+  static connect() {
+    if (!this.#instance) {
+      this.#instance = createClient(config.SUPABASE_URL, config.SUPABASE_API_KEY);
+
+      console.log('Supabase connected successfully.');
+    }
+
+    return this.#instance;
   }
 }
 
-export default Database;
+export default SupabaseClientSingleton;
