@@ -30,7 +30,7 @@ export default class SupabaseTransactionsRepository {
         user_id,
         type,
         currency,
-        ocurred_at,
+        occurred_at,
         description,
         notes,
         source,
