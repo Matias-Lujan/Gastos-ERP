@@ -2,19 +2,11 @@ import { config } from './src/config/config.js';
 //import DatabaseFactory from './src/databases/DatabaseFactory.js';
 import server from './src/server.js';
 import Database from './src/databases/supabase.cnx.js';
+import DatabaseConnectionFactory from './src/databases/DatabaseConnectionFactory.js';
 
 const runServer = async () => {
   try {
-    /* if (config.DATABASE == "mongoose") {
-            DatabaseFactory.getConnection()
-        } */
-    /*  DatabaseFactory.getConnection(config.DATABASE); */
-    console.log('aaaaa');
-    console.log(
-      `${config.SUPABASE_URL} ${config.SUPABASE_API_KEY} ${config.SERVER_HOST} ${config.SERVER_PORT}`,
-    );
-    Database.connect();
-    console.log('bbbbb');
+    DatabaseConnectionFactory.getClient();
     server.listen(
       config.SERVER_PORT,
       config.SERVER_HOST,
