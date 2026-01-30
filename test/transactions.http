@@ -1,0 +1,40 @@
+@host=http://127.0.0.1:3001
+
+### Create expense (basic smoke test)
+POST {{host}}/transactions/expense
+Content-Type: application/json
+x-user-id: d54f0d53-6ec4-41bc-885e-6c8e21d0467b
+
+{
+  "account_id": "f8b59104-e67b-42dd-b11d-33f842cbe3d1",
+  "amount": 100,
+  "occurred_at": "2026-01-29T12:00:00.000Z",
+  "description": "Test expense"
+}
+
+
+### Create expense with category + merchant
+POST {{host}}/transactions/expense
+Content-Type: application/json
+x-user-id: d54f0d53-6ec4-41bc-885e-6c8e21d0467b
+
+{
+  "account_id": "f8b59104-e67b-42dd-b11d-33f842cbe3d1",
+  "amount": 250,
+  "occurred_at": "2026-01-29T15:00:00.000Z",
+  "description": "Supermercado",
+  "category_id": "UUID_CATEGORIA",
+  "merchant_id": "UUID_MERCHANT"
+}
+
+### Expense using internal account (must fail)
+POST {{host}}/transactions/expense
+Content-Type: application/json
+x-user-id: d54f0d53-6ec4-41bc-885e-6c8e21d0467b
+
+{
+  "account_id": "6fd9a2a2-102c-4968-aa53-f60fc830a354",
+  "amount": 50,
+  "occurred_at": "2026-01-29T16:00:00.000Z",
+  "description": "Should fail"
+}

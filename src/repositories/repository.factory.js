@@ -1,7 +1,7 @@
-import SupabaseAccountsRepository from './supabase/supabase.accounts.repository';
-import SupabaseCategoriesRepository from './supabase/supabase.categories.repository';
-import SupabaseMerchantsRepository from './supabase/supabase.merchants.repository';
-import SupabaseTransactionsRepository from './supabase/supabase.transactions.repository';
+import SupabaseAccountsRepository from './supabase/supabase.accounts.repository.js';
+import SupabaseCategoriesRepository from './supabase/supabase.categories.repository.js';
+import SupabaseMerchantsRepository from './supabase/supabase.merchants.repository.js';
+import SupabaseTransactionsRepository from './supabase/supabase.transactions.repository.js';
 
 export default class RepositoryFactory {
   static createAll(dbType, dbClient) {
